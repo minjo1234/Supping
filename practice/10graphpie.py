@@ -7,7 +7,6 @@ import numpy as np
 
 import matplotlib as mpl
 
-
 rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False  # 추가해줍니다.
 

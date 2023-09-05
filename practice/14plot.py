@@ -87,7 +87,7 @@ print()
 # print(df.loc[1:3])
 print(df.info())
 
-
+# pands와 Maplotli을 이용해서 도표를 만들었다 .
 time.sleep(1)
 ax = df.plot(kind='bar', figsize=(10, 5))
 plt.legend(loc='upper right')

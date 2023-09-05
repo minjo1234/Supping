@@ -3,12 +3,12 @@ import time
 import matplotlib.pyplot as plt
 import seaborn as sns  # dataset ( pip install seaborn )
 from matplotlib import font_manager
-from matplotlib import rc
+
 import numpy as np
 import seaborn as seaborn
 import matplotlib as mpl
 
-
+from matplotlib import rc
 rc('font', family='AppleGothic')
 plt.rcParams['axes.unicode_minus'] = False  # 추가해줍니다.
 '''
