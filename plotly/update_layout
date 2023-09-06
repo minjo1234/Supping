@@ -28,6 +28,23 @@ fig = go.Figure(data=go.Scatter(x=x, y=y, mode='markers'))
 fig.update_xaxes(title_text='Total Bill ($)')
 fig.update_yaxes(title_text='Tip ($)')
 
+# fig.update_layout(
+#     margin_l=left margine,
+#     margin_r=right margine,
+#     margin_b=right margine,
+#     margin_t=top margine
+# )
+
+fig.update_layout(
+    width=800,
+    height=600,
+    margin_l=200,
+    margin_r=200,
+    maring_b=100,
+    margin_t=100,
+    # 백그라운드 칼라 지정, margin 잘 보이게 하기위함
+    paper_bgcolor='LightSteeBlue'
+)
 fig.show()
 
 # 데이터를 불러오는것은 px.data를 이용한다 .
