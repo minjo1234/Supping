@@ -10,7 +10,7 @@ import seaborn as sns
 from matplotlib import rc
 import re
 import plotly.express as px
-
+import xlwt
 # webdriver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -35,6 +35,7 @@ total = 0
 url = 'https://finance.daum.net/quotes/A005930#home'
 driver.get(url)
 
+pathxls = './data/samsung.xlsx'
 # 주식체크 check()
 
 # def check()
@@ -45,7 +46,7 @@ def check():
     global y_val
     global count
     global total
-
+    global pathxls
     # html parsing and parsing data print
     html = driver.page_source
     soup = BeautifulSoup(html, 'html.parser')
@@ -83,8 +84,16 @@ for i in range(10):
     count += 1
 
     time.sleep(1)
-    if count > 50:
+    if count > 9:
+        stock = {
+            'time': x_val,
+            'price': y_val
+        }
+        pathxls = './data/samsung.xlsx'
+        df = pd.DataFrame(stock)
+        df.to_excel(pathxls)
         schedule.cancel_job(check)
+        break
 
 # 선 그래프 생성
 plt.figure(figsize=(12, 6))  # 가로세로를 지정하다
@@ -96,10 +105,8 @@ plt.plot(x_val, [int(price.replace(',', '')) for price in y_val])
 def y_format(x, _):
     return f'{x:,.0f}'  # 80,000 형식으로 포맷 -> 0,000에는 ,를사용하고 0f까지 출력한다 .
 
-
 # Y축에 서식을 적용
 # plt.gca().yaxis.set_major_formatter(FuncFormatter(y_format))
-
 # plt.title('삼성전자 주식 가격 변화')
 # plt.xlabel('시간')
 # plt.ylabel('주식 가격')
@@ -109,15 +116,22 @@ def y_format(x, _):
 # plt.tight_layout()
 # plt.show()
 
-pathxls = './data/samsung.xls'
-driver.close()
-# x_val과 y_val을 데이터프레임으로 만듭니다.
+
 df = pd.DataFrame(
     {'시간': x_val, '주식 가격': [int(price.replace(',', '')) for price in y_val]})
+fig = px.line(df, x='시간', y='주식 가격', title='삼성전자 주식 가격변화 ')
+fig.show()
 
-# Plotly를 사용하여 그래프 생성
-fig = px.line(df, x='시간', y='주식 가격', title='삼성전자 주식 가격 변화')
-fig.update_xaxes(type='category')  # X축을 범주형으로 설정하여 시간을 연속적으로 표시하지 않도록 합니다.
+driver.close()
+
+
+# x_val과 y_val을 데이터프레임으로 만듭니다.
+# df = pd.DataFrame(
+# {'시간': x_val, '주식 가격': [int(price.replace(',', '')) for price in y_val]})
+# # df pd.DataFrame ( 변수를 넣어준다 )
+# # Plotly를 사용하여 그래프 생성
+# fig = px.line(df, x='시간', y='주식 가격', title='삼성전자 주식 가격 변화')
+# fig.update_xaxes(type='category')  # X축을 범주형으로 설정하여 시간을 연속적으로 표시하지 않도록 합니다.
 
 # 그래프 표시
-fig.show()
+# fig.show()
