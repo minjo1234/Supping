@@ -14,3 +14,5 @@ fig.update_xaxes(title_text='number')
 fig.update_yaxes(title_text='number result')
 
 fig.show()
+
+

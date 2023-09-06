@@ -46,7 +46,7 @@ try:
         if(  4<=  i <= 8 or 12 <= i <= 16 or 20 <= i <= 24  or 28 <= i <= 32 ):
             OneList = f'//*[@id="content"]/div[2]/table[1]/tbody/tr[{i}]'
             StockList = driver.find_element(By.XPATH, OneList)
-
+            
         for cell in StockList.find_elements(By.TAG_NAME, 'td'):
             result.append(cell.text)
 

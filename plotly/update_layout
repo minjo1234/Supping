@@ -34,7 +34,7 @@ fig.update_yaxes(title_text='Tip ($)')
 #     margin_b=right margine,
 #     margin_t=top margine
 # )
-
+'''
 fig.update_layout(
     width=800,
     height=600,
@@ -46,6 +46,9 @@ fig.update_layout(
     paper_bgcolor='LightSteeBlue'
 )
 fig.show()
+'''
+
+
 
 # 데이터를 불러오는것은 px.data를 이용한다 .
 # px.bar
