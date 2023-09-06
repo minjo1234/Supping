@@ -11,3 +11,6 @@ driver = webdriver.Chrome(options=options)
 
 url = 'https://finance.daum.net/quotes/A005930#home'
 driver.get(url)
+
+
+# 변수 check

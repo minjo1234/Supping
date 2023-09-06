@@ -9,3 +9,8 @@ election = px.data.election()
 election.head()
 # head를 이용해서 위에서 5개 가져오기 .
 print(election.head())
+
+
+# 1. import plotly.express as px
+# 2. px.data.가져오고싶은데이터()
+# 3. 출력하고싶은 부분 가져오기 .
