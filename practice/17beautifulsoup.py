@@ -35,4 +35,6 @@ print()
 print(soup.a)
 print(soup.find_all('a'))
 print()
-print(soup.find(id='link3'))
+print(soup.find(id='link3'))  # id = link3인 것을 호출
+
+print(soup.get_text())
