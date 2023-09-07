@@ -49,7 +49,7 @@ fig.show()
 '''
 
 
-
 # 데이터를 불러오는것은 px.data를 이용한다 .
 # px.bar
 # go.Figure(data=go.bar , Layout )등으로 데이터의 형식을 지정해서 넣고
+#

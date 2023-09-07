@@ -55,7 +55,8 @@ def ex4():
 
     fig.show()
     fig.update_xaxes(title_text='Total bill($)')
-    fig
+    fig.update_yaxes(title_text='Tip ($)')
+    fig.show()
 
 
 # ex1()

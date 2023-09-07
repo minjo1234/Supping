@@ -22,11 +22,13 @@ def getNatVistor(yyyymm, nat_cd, ed_cd):
     # http://openapi.tour.go.kr/openapi/service/EdrcntTourismStatsService/getEdrcntTourismStatsList?serviceKey + &YM=201201&NAT_CD=112&ED_CD=E'
     serviceKey = '6kNS80LAr70h8NBAdKUk5ZS03ku6ZwZ%2Fc2UObO8MBqdvBdj5Rkvbc7Pjz6%2BPDntVgb0v30Dv8r2XDtDGl3tW7A%3D%3D'
     url = 'http://openapi.tour.go.kr/openapi/service/EdrcntTourismStatsService/getEdrcntTourismStatsList?serviceKey=6kNS80LAr70h8NBAdKUk5ZS03ku6ZwZ%2Fc2UObO8MBqdvBdj5Rkvbc7Pjz6%2BPDntVgb0v30Dv8r2XDtDGl3tW7A%3D%3D&YM=201201&NAT_CD=112&ED_CD=E'
+
     parameter = '?_type=json&service='+serviceKey
     parameter = parameter + '&YM=' + yyyymm
     parameter = parameter + '&NAT_CD=' + nat_cd
     parameter = parameter + '&ED_CD=' + ed_cd
     url = url + parameter
+
     print(url)
 
     ret = get_request_url(url)  # 9라인 함수호출
@@ -40,10 +42,12 @@ def getNatVistor(yyyymm, nat_cd, ed_cd):
 result = []
 for year in range(2019, 2021):
     for month in range(1, 3):
-        yyyymm = '202105'
-        json_data = ''
-        getNatVistor(yyyymm, '275', 'E') #275미국코드 , D=국민해외관광객  E=방한외래관광객 
-        
+        yyyymm = '{0}{1:0>2}'.format(str(year), str(month))
+        json_data = getNatVistor(yyyymm, '275', 'E')
+        if (json_data['response']['header']['resultMsg'] == 'OK'):
+            natKornum = ''
+            num = ''
+            print('%s %s %s' % (str(year), str(month), 'kim'))
 
 '''
 웹에서 데이터 크롤링

@@ -14,16 +14,9 @@ driver = webdriver.Chrome(options=options)
 
 try:
     driver.get('https://finance.daum.net/quotes/A005930#current/quote')
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[1]
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[2]
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[6]
-    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[10]
-
     result = []
     data = []
-#  //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody
+
     for i in range(1, 11):
         xpath = f'//*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[{i}]'
         ScoreList = driver.find_elements(By.XPATH, xpath)
@@ -31,8 +24,6 @@ try:
             td_elements = ScoreList[j].find_elements(By.TAG_NAME, 'td')
             for td in td_elements:
                 result.append(td.text)
-#
-# //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
 
     for i in range(len(result)):
         data = [result[i:i+8] for i in range(0, len(result), 8)]
@@ -46,3 +37,14 @@ try:
 
 except Exception as e:
     print("Error", e)
+
+# 규칙성
+   # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[1]
+    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[2]
+    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
+    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
+    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[6]
+    # //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[10]
+    #
+# //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody/tr[5]
+#  //*[@id="boxDayHistory"]/div/div[2]/div/table/tbody
