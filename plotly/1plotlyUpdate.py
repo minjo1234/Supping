@@ -58,8 +58,47 @@ def ex4():
     fig.update_yaxes(title_text='Tip ($)')
     fig.show()
 
+# 축 레이블은 글자크기 , 색  , 서체 변경이 가능
+
+
+def ex5():
+    fig.update_xaxes(title_font_size=30,
+                     title_font_color='crimson',
+                     title_font_family='Courier')
+    fig.update_yaxes(title_font_size=30,
+                     title_font_color='crimson',
+                     title_font_family='Courier')
+    fig.show()
+
+# 축 타이틀 위치 지정 방법
+
+
+def ex6():
+    fig.update_xaxes(title_standoff=100)
+    fig.update_yaxes(title_standoff=100)
+
+    fig.show()
+
+
+def ex7():
+    import plotly.express as px
+
+    # 데이터불러오기
+    df = px.data.tips()
+
+    # 그래프 그리기
+    fig = px.scatter(df, x='total_bill', y='tip')
+
+    #  축 레이블 삭제하기
+    fig.update_xaxes(title=None)
+    fig.update_yaxes(title=None)
+
+    fig.show()
+
 
 # ex1()
 # ex2()
 # ex3()
-ex4()
+# ex4()
+# ex5()
+ex7()
