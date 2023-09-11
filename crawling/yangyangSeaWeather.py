@@ -60,9 +60,8 @@ try:
         else:
             yangyang_dict[titleList[p]] = [WeatherList[p+6], WeatherTide[p+5]]
     # json 추가
-    with open('./data/yangyang_json', 'w', encoding='utf8') as data:
+    with open('./data/yangyang.json', 'w', encoding='utf8') as data:
         json.dump(yangyang_dict, data, indent=4, ensure_ascii=False)
 
 except Exception as e:
     print('Exception', e)
-
