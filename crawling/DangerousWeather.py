@@ -52,7 +52,7 @@ try:
                 By.XPATH, f'//*[@id="sea-warning-now"]/div/div/div/table/tbody/tr[{k}]/td[{j}]')
             # 1~6  8~6
             my_dict[text_list[j-1]] = text.text
-
+    # print
     # json 폴더생성
     with open('./data/Dangerous.json', 'w', encoding='utf-8') as json_file:
         json.dump(my_dict, json_file, ensure_ascii=False, indent=4)
